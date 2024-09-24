@@ -16,46 +16,46 @@ public class StoreController {
 bookService service;
 
 
-@PostMapping("/add-new-product")
+@PostMapping("/api/add-new-book")
     public String newproduct(@RequestBody book p )
 {
     return service.newbookadd(p);
 }
- @PutMapping("/add-book")
+ @PutMapping("api/add-book")
  public String addbook(@RequestBody book p )
     {
         return service.addbook(p);
     }
-    @GetMapping("/book/{id}")
+    @GetMapping("/api/book/{id}")
     public book getBookById(@PathVariable int id){
          return service.getById(id);
     }
-    @GetMapping("/book-list")
+    @GetMapping("/api/book-list")
     public List<book> booklist(){
     return service.list();
     }
-    @GetMapping("/number-of-books/{id}")
+    @GetMapping("/api/number-of-books/{id}")
     public int numberOfBooks(@PathVariable int id){
 
     return service.countOfbooks(id);
     }
-    @PutMapping("/books/{id}")
+    @PutMapping("/api/books/{id}")
    public void Update(@PathVariable int id,@RequestBody book BooktoD){
     service.update(id,BooktoD);
 }
-    @PutMapping("/sell-book/{id}")
+    @PutMapping("/api/sell-book/{id}")
     public void sellbook(@PathVariable int id){
         service.sellbook(id);
     }
-    @PostMapping("/sell-books")
+    @PostMapping("/api/sell-books")
         public void sellbook(@RequestBody SellDto sellDto){
           service.sellcopies(sellDto);
     }
-    @PostMapping("/books")
+    @PostMapping("/api/books")
     public String bookByCategory(@RequestParam String keyword,@RequestParam BookCategory category){
     return service.search(keyword,category);
 }
-    @PostMapping("/number-of-books")
+    @PostMapping("/api/number-of-books")
     public int NoOfBooksByCategory(@RequestParam String keyword,@RequestParam BookCategory category){
         return service.NumberofBooksBySearch(keyword,category);
     }
